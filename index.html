@@ -91,15 +91,18 @@
     .offline-message {
       position: fixed;
       top: 0;
-      left: 0;
-      right: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: fit-content;
+      max-width: 400px;
       background: #ff9800;
       color: white;
-      padding: 12px;
+      padding: 12px 20px;
       text-align: center;
       font-size: 14px;
       z-index: 10000;
       display: none;
+      border-radius: 0 0 8px 8px;
     }
   </style>
 </head>

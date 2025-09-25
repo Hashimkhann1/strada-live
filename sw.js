@@ -2,11 +2,16 @@
 const CACHE_NAME = 'strada-pos-v1';
 const OFFLINE_URL = '/index.html';
 
-// Files to cache immediately
+// Files to cache immediately - based on your actual build files
 const STATIC_CACHE_URLS = [
   '/',
   '/index.html',
-  '/manifest.json'
+  '/manifest.json',
+  '/main.dart.js',
+  '/flutter.js',
+  '/flutter_bootstrap.js',
+  '/flutter_service_worker.js',
+  '/favicon.png'
 ];
 
 // Install - cache core files
@@ -96,7 +101,7 @@ self.addEventListener('fetch', (event) => {
             // For navigation requests, always return index.html when offline
             if (event.request.mode === 'navigate' ||
                 event.request.destination === 'document' ||
-                event.request.headers.get('accept').includes('text/html')) {
+                event.request.headers.get('accept')?.includes('text/html')) {
               console.log('SW: Returning offline page for navigation');
               return caches.match(OFFLINE_URL);
             }
